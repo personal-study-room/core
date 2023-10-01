@@ -4,7 +4,11 @@ package hello.core.member;
 // DIP : 실제 서비스를 반영하는 코드에서는 구현체를 의존하는 것이 아니라, interface를 바라보게 만들어야 한다!
 public class MemberServiceImpl implements MemberService{
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
+
+    public MemberServiceImpl(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     @Override
     public void join(Member member) {
